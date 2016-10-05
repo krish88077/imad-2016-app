@@ -28,11 +28,11 @@ var button = document.getElementById('counter');
 
 button.onclick= function (){
   // create a request object
-  var request = new XMLHTTPRequest();
+  var request = new XMLHttPRequest();
   
   //capture the response and store it in a variable
   request.onreadystatechange = function (){
-      if(request.readyState===XMLHTTPRequest.DONE){
+      if(request.readyState===XMLHttPRequest.DONE){
           //take some action
           if(request.status===200){
               var counter = request.responseText;
@@ -43,6 +43,6 @@ button.onclick= function (){
       //not done yet
   };
   //make the request
-  request.open('GET', 'http://http://krish88077.imad.hasura-app.io/counter',true);
+  request.open('GET', 'http://krish88077.imad.hasura-app.io/counter',true);
   request.send(null);
 };
