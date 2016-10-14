@@ -49,3 +49,10 @@ div {
        font-size: 22px;
        text-align: center;
     }
+
+body{
+    background: url("http://dash.ga.co/assets/anna-bg.png");
+    background-size :cover;
+    background-position :center;
+  
+}
