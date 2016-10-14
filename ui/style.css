@@ -28,3 +28,24 @@ body {
     padding-right: 20px;
         }
 
+
+
+
+
+  input {
+      border: 0;
+      padding: 10px;
+      font-size: 18px;
+    }
+ input[type="submit"] {
+      background: red;
+      color: white;
+    }
+ h3 {
+       font-size: 22px;
+       text-align: center;
+    }
+div {
+       font-size: 22px;
+       text-align: center;
+    }
