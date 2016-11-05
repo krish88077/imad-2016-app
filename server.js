@@ -141,7 +141,6 @@ app.get('/check-login', function (req, res) {
            if (err) {
               res.status(500).send(err.toString());
            } else {
-               res.send('You are logged in: ' +req.session.auth.userId.toString()); 
               res.send(result.rows[0].username);    
            }
        });
