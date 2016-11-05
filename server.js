@@ -4,6 +4,7 @@ var path = require('path');
 var Pool = require('pg').Pool;
 var crypto = require('crypto');
 var bodyParser = require('body-parser');
+var session = require('express-session');
 
 var config = {
     user: 'krish88077',
@@ -16,6 +17,11 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(session({
+    secret: 'someRandomSecretValue',
+    cookie: {maxAge: 1000*60*60*24*30}
+    
+}));
 
 
 function createTemplate (data) {
@@ -113,6 +119,12 @@ app.post('/login',function(req,res) {
                 var salt = dbString.split('$')[2];
                 var hashPassword = hash(password,salt);// creating a hash based on the password submitted and the original salt
                 if(hashedPassword===dbString){
+                    //set session
+                    req.session.auth = {userId: result.rows[0].id};
+                    //set cookie with session id
+                    // internally on server side, it maps session id to an obj
+                    //{auth: {userId }}
+                    
                     res.send('Credentials correct');
                 }else{
                     res.send(403).send('username/ password is invalid ');
@@ -120,6 +132,15 @@ app.post('/login',function(req,res) {
             }
         }
     });
+});
+
+app.get('/check-login', function(req,res) {
+    if(req.session && req.session.auth && req.session.auth.userId){
+        req.send('You are logged in:' + req.session.auth.userId.toString());
+        }else {
+            res.send('You are not logged in');
+        }
+    
 });
 
 
