@@ -39,9 +39,9 @@ submit.onclick= function () {
           if(request.status === 200){
            console.log('user logged in');
            alert('logged in successfully');
-          }else (request.status === 403) {
+          }else if (request.status === 403) {
             alert('Username/ password is incorrect');  
-          }else (request.status === 500) {
+          }else if (request.status === 500) {
             alert('Something went wrong on the server');  
           }
           
@@ -54,6 +54,7 @@ submit.onclick= function () {
   console.log(username);
   console.log(password);
   request.open('POST', 'http://krish88077.imad.hasura-app.io/login,true');
+  request.setRequestHeader('Content-Type', 'application/json');
   request.send(JSON.stringify({username: username, password: password}));
   
     
