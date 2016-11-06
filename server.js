@@ -221,6 +221,10 @@ app.get('/Achievements.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'Achievements.html'));
 });
 
+app.get('/Trainings.html', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'Trainings.html'));
+});
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
