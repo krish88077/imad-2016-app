@@ -30,7 +30,7 @@ function loadLoginForm () {
                   alert('Something went wrong on the server');
                   submit.value = 'Login';
               }
-              loadLoggedInUser();
+              loadLogin();
           }  
           // Not done yet
         };
